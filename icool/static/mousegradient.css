@@ -1,0 +1,11 @@
+.gradient {
+  color: black; /* Initial gradient - dark blue to light blue */
+  background: -webkit-linear-gradient(#248df7, #00ffea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient:focus-visible {
+  outline: none; /* Remove the focus outline if you don't want it */
+  color: linear-gradient(to bottom, #87CEEB, #ADD8E6); /* Updated gradient on focus - light blue to sky blue */
+}
