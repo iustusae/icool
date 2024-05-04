@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iCool HVAC</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="static/mousegradient.css">
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      background-color: #ffffff;
+      color: #202080;
+    }
+
+    .navbar,
+    .carousel {
+      background-color: transparent;
+    }
+
+    .section {
+      padding: 50px 0;
+    }
+
+    .carousel-item img {
+      height: 80vh;
+      object-fit: cover;
+    }
+
+    .heat {
+      color: rgb(174, 12, 12);
+    }
+
+    .cool {
+      color: rgb(130, 130, 252);
+    }
+
+    .logo {
+      display: block;
+      max-width: 200px;
+      max-height: 75px;
+      width: auto;
+      height: auto;
+    }
+
+
+    .carousel-item {
+      transition: transform 2s ease;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light bg-white sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">
+        <img src="assets/logopro.svg" alt="Logo" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#values">Values</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Schedule with Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="carouselq" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="assets/hvac1.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Reliability</h5>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quoteModal">
+            Get a Quote
+          </button>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="assets/hvac2.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Quality</h5>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quoteModal">
+            Get a Quote
+          </button>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="assets/professional-hvac-technician.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Integrity</h5>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#quoteModal">
+            Get a Quote
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="quoteModalLabel">Get a Quote</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="quoteForm">
+            <div class="mb-3">
+              <label for="serviceType" class="form-label">Type of Service</label>
+              <select class="form-select" id="serviceType" onchange="showHideFields()">
+                <option selected>Choose...</option>
+                <option value="installation">Installation</option>
+                <option value="maintenance">Maintenance</option>
+                <!-- Add more options as needed -->
+              </select>
+            </div>
+            <div class="mb-3" id="installationFields" style="display: none;">
+              <label for="installationType" class="form-label">Installation Type</label>
+              <select class="form-select" id="installationType">
+                <option selected>Choose...</option>
+                <option value="vertical">Vertical</option>
+                <option value="horizontal">Horizontal</option>
+              </select>
+              <label for="tonnage" class="form-label">Tonnage</label>
+              <input type="number" class="form-control" id="tonnage" min="1" max="10">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container col-xxl-8 px-4 py-5" data-aos-delay="600">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+      <div class="col-10 col-sm-8 col-lg-6" data-aos="fade-left">
+        <img src="assets/map.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500"
+          loading="lazy">
+      </div>
+      <div class="col-lg-6" data-aos="fade-right">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Welcome to <span id="_followMouse" class="gradient"
+            tabindex="0">iCool HVAC</span>! <br>
+        </h1>
+        <h2 class="text-body-emphasis">
+          The best HVAC Install, Repair and Maintenance company serving the entirety of South Florida!.
+        </h2>
+
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Get a Quote!</button>
+          <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4">Schedule </button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="about" class="section">
+    <div class="container">
+      <h1 style="font-size: 2.5em; color: #6cabea;">About Us</h1>
+      <p style="font-size: 1.2em; line-height: 1.6; color: #34495e;">
+        <em>iCool HVAC</em> is a leading provider of heating, ventilation, and air conditioning solutions. Our team of
+        <strong style="color: #e74c3c;">highly experienced professionals</strong> are dedicated to delivering top-notch
+        service and innovative
+        products to our customers. Whether you need a new unit installed or have a <span class="heat"
+          style="color: #e67e22;">
+          <strong>heating</strong></span> or <span class="cool" style="color: #3498db;"><strong>cooling</strong></span>
+        problem, you can trust us to get the job done right.
+      </p>
+    </div>
+  </section>
+
+
+  <section id="values" class="section">
+    <div class="container">
+      <h2>Our Values</h2>
+      <div class="row">
+        <div class="col-sm-6 col-md-3 " data-aos="fade-up">
+          <div class="card" style="border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 10px;">
+            <div class="card-body" style="background-color: #f0f8ff;">
+              <h5 class="card-title">Quality</h5>
+              <p class="card-text">We strive for excellence in all that we do.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-sm-6 col-md-3" data-aos="fade-down" data-aos-delay="300">
+          <div class="card" style="border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 10px;">
+            <div class="card-body" style="background-color: #f0f8ff;">
+              <h5 class="card-title">Reliability</h5>
+              <p class="card-text">We deliver on our promises and stand by our work.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3" data-aos="fade-up" data-aos-delay="600">
+          <div class="card" style="border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 10px;">
+            <div class="card-body" style="background-color: #f0f8ff;">
+              <h5 class="card-title">Integrity</h5>
+              <p class="card-text">We conduct our business with honesty and transparency.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3" data-aos="fade-down" data-aos-delay="900">
+          <div class="card" style="border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 10px;">
+            <div class="card-body" style="background-color: #f0f8ff;">
+              <h5 class="card-title">Experience</h5>
+              <p class="card-text">Our team brings years of industry knowledge and expertise.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="row">
+        <div class="col-sm-6 col-md-4" data-aos="zoom-in">
+          <div class="card" style="border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 10px; ">
+            <div class="card-body" style="background-color: #f0f8ff;">
+              <h5 class="card-title">Unit Installations</h5>
+              <p class="card-text">Our experienced team provides professional installation services, ensuring your units
+                are set up for optimal performance.</p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4" data-aos="zoom-in">
+          <div class="card" style="border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 10px;">
+            <div class="card-body" style="background-color: #f0f8ff;">
+              <h5 class="card-title">Maintenance</h5>
+              <p class="card-text">We offer regular maintenance services to keep your units running efficiently and
+                prevent potential issues.</p>
+              <br>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4" data-aos="zoom-in">
+          <div class="card" style="border: none; box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); border-radius: 10px;">
+            <div class="card-body" style="background-color: #f0f8ff;">
+              <h5 class="card-title">Repairs</h5>
+              <p class="card-text">Our skilled technicians can diagnose and repair any issues you may be experiencing
+                with your units.
+              </p>
+              <br>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div>
+  </section>
+  <section id="contact" class="section">
+    <div class="container">
+      <h2 class="animate__animated animate__fadeInDown">Contact Us</h2>
+      <p class="animate__animated animate__fadeInUp">We'd love to hear from you! Whether you have a question about our
+        services, need assistance with an existing system, or want to discuss a new project, our team is ready to help.
+        Contact us today to get started!</p>
+
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">
+  Contact Us
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactModalLabel">Contact Us</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullName">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email">
+          </div>
+          <div class="mb-3">
+            <label for="phone" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="phone">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="3"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send Message</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <p>© 2024 iCool HVAC. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="static/index.js"></script>
+
+  <script>
+    AOS.init();
+
+
+
+    document.getElementById('submitBtn').addEventListener('click', function () {
+      console.log('Sent!');
+    });
+
+  </script>
+
+
+<script>
+  function showHideFields() {
+    var serviceType = document.getElementById('serviceType').value;
+    if (serviceType === 'installation') {
+      document.getElementById('installationFields').style.display = 'block';
+    } else {
+      document.getElementById('installationFields').style.display = 'none';
+    }
+  }
+  </script>
+</body>
+
+</html>
